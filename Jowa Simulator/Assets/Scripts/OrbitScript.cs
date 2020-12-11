@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class OrbitScript : MonoBehaviour
 {
+	[SerializeField] Rigidbody2D character;
 	[SerializeField] Transform rotationCenter;
 	[SerializeField] Button aButton;
 	[SerializeField] Button dButton;
@@ -39,13 +40,13 @@ public class OrbitScript : MonoBehaviour
 
 	public void RotateClockwise()
     {
-		angularSpeed = -2.0f;
+		angularSpeed = -1.0f;
 		angle = angle + Time.deltaTime * angularSpeed;
 	} 
 
 	public void RotateCounterClockwise()
     {
-		angularSpeed = 2.0f;
+		angularSpeed = 1.0f;
 		angle = angle + Time.deltaTime * angularSpeed;
 	}
 }
