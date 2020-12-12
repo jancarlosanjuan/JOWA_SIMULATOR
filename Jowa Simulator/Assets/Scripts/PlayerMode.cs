@@ -18,17 +18,29 @@ public class PlayerMode : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            changeMode();
-            playervar.type = playerMode;
+            changeModeRight();
         }
     }
 
-    void changeMode()
+    public void changeModeRight()
     {
+        Debug.Log("Switching Weapons +1... Current mode: " + playerMode);
         playerMode++;
         if(playerMode > 2)
         {
             playerMode = 0;
         }
+        playervar.type = playerMode;
+    }
+
+    public void changeModeLeft()
+    {
+        Debug.Log("Switching Weapons -1... Current mode: " +playerMode);
+        playerMode--;
+        if (playerMode < 0)
+        {
+            playerMode = 2;
+        }
+        playervar.type = playerMode;
     }
 }

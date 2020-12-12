@@ -18,7 +18,13 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
+            //bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
+            shootBullet();
         }
+    }
+
+    public void shootBullet()
+    {
+        bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
     }
 }
