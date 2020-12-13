@@ -16,7 +16,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void LoadDebugPanel()
     {
-        DebugPanel.SetActive(true);
+        DebugPanel.SetActive(!DebugPanel.activeSelf);
     }
 
     public void ExitGame()

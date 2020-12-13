@@ -15,6 +15,7 @@ public class PlayerVariables : MonoBehaviour
     public int currency;
     public int type;
     public int bulletDamage;
+    public int numShields;
     void Start()
     {
         //bulletDamage = 10;

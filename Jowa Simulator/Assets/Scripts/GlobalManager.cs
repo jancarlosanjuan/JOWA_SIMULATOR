@@ -42,6 +42,6 @@ public class GlobalManager : MonoBehaviour
 
     //variables here
     public int Currency = 0;
-   
+    public int Shields = 0;
   
 }
