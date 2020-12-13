@@ -37,6 +37,7 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        health = 10;
         gamemanager = gamemanagerObject.GetComponent<GameManager>();
         text = _text.GetComponent<ChangeText>();
         type = Random.Range(0, 3);

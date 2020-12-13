@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerVariables : MonoBehaviour
 {
-
+    [SerializeField] private GameObject _healthText;
+    private ChangeText healthText;
+    [SerializeField] private GameObject _currencyText;
+    private ChangeText currencyText;
     // Start is called before the first frame update
 
     //these are also upgradable;
@@ -18,19 +21,27 @@ public class PlayerVariables : MonoBehaviour
     public int numShields;
     void Start()
     {
-        //bulletDamage = 10;
+        bulletDamage = 10;
+        health = 10;
+        bulletSpeed = 1;
         currency = GlobalManager.Instance.Currency;
+
+        healthText = _healthText.GetComponent<ChangeText>();
+        healthText.changeCurrencyText(health);
+
+        currencyText = _currencyText.GetComponent<ChangeText>();
+        currencyText.changeCurrencyText(currency);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        /*if (Input.GetKeyDown(KeyCode.C))
         {
             currency++;
             GlobalManager.Instance.Currency = currency;
             Debug.Log("CURRENCY IS: " + GlobalManager.Instance.Currency);
-        }
+        }*/
 
     }
     public void setHealth(int newhealth)
