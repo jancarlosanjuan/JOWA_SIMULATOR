@@ -116,14 +116,13 @@ public class EnemyScript : MonoBehaviour
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }
         }
-        /*
+        
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
             Debug.Log("Collided with Enemy!");
         }
-        */
-
+    
     }
 
 

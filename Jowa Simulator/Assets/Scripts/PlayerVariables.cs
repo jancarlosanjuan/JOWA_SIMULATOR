@@ -21,9 +21,9 @@ public class PlayerVariables : MonoBehaviour
     public int numShields;
     void Start()
     {
-        bulletDamage = 10;
-        health = 10;
-        bulletSpeed = 1;
+        bulletDamage = 10 + GlobalManager.Instance.DamageAdd;
+        health = 10 + GlobalManager.Instance.HealthAdd;
+        bulletSpeed = 1 * GlobalManager.Instance.SpeedMultiplier;
         currency = GlobalManager.Instance.Currency;
 
         healthText = _healthText.GetComponent<ChangeText>();

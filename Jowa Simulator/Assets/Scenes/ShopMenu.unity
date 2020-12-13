@@ -234,6 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyText: {fileID: 838286598}
+  weaponText: {fileID: 83720668}
+  healthText: {fileID: 280548365}
+  speedText: {fileID: 1547346561}
   shieldText: {fileID: 624125170}
 --- !u!1 &83720666
 GameObject:
@@ -778,7 +781,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 623573647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 59134781}
+        m_MethodName: UpgradeSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &623573647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1066,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 826542713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 59134781}
+        m_MethodName: UpgradeWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &826542713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -8.8151}
+  m_AnchoredPosition: {x: 60, y: -8.8151245}
   m_SizeDelta: {x: 752.26105, y: 82.36984}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &838286598
@@ -1655,7 +1680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 100
+  m_MinHeight: 150
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 1
@@ -1845,7 +1870,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1234667260}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 59134781}
+        m_MethodName: UpgradeHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1234667260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,8 +2880,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -32.231567, y: 18.553833}
-  m_SizeDelta: {x: 312.33704, y: 62.892296}
+  m_AnchoredPosition: {x: -35, y: 43.554}
+  m_SizeDelta: {x: 370.625, y: 74.62919}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1781940483
 MonoBehaviour:

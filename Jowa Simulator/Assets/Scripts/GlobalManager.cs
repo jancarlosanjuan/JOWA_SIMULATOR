@@ -43,5 +43,8 @@ public class GlobalManager : MonoBehaviour
     //variables here
     public int Currency = 0;
     public int Shields = 0;
-  
+    public int DamageAdd = 0;
+    public int HealthAdd = 0;
+    public float SpeedMultiplier = 1.0f;
+
 }

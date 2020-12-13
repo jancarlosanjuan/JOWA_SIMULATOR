@@ -40,13 +40,13 @@ public class OrbitScript : MonoBehaviour
 
 	public void RotateClockwise()
     {
-		angularSpeed = -1.0f;
+		angularSpeed = -1.0f * GlobalManager.Instance.SpeedMultiplier;
 		angle = angle + Time.deltaTime * angularSpeed;
 	} 
 
 	public void RotateCounterClockwise()
     {
-		angularSpeed = 1.0f;
+		angularSpeed = 1.0f * GlobalManager.Instance.SpeedMultiplier;
 		angle = angle + Time.deltaTime * angularSpeed;
 	}
 }
