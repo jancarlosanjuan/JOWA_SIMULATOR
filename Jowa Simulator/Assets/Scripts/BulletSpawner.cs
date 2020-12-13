@@ -25,11 +25,10 @@ public class BulletSpawner : MonoBehaviour
 
     public void spawnBullets()
     {
-        gamemanager.bulletContainer.Add(Instantiate(bullet, playerReference.transform.position, Quaternion.identity) as GameObject);
+        GameObject spawn = Instantiate(bullet, playerReference.transform.position, Quaternion.identity);
+        spawn.SetActive(true);
+        gamemanager.bulletContainer.Add(spawn);
         
-       
-        //bulletList.Add(Instantiate(bullet, playerReference.transform.position, Quaternion.identity));
-        //Instantiate(bullet, playerReference.transform.position, Quaternion.identity);
     }
 
     /*public List<GameObject> getBulletList()

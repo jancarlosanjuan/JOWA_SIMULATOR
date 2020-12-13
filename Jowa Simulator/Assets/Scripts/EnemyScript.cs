@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -10,54 +11,55 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private GameObject gamemanagerObject;
     private GameManager gamemanager;
 
+    //Text
+    [SerializeField] private GameObject _text;
+    private ChangeText text;
+
     //enemy type
-    [SerializeField] private int health;
+    [SerializeField] private int health = 1;
     [SerializeField] private float speed;
     [SerializeField] private int type; //0 = red, 1 = green, 2 = blue 
-    [SerializeField] private int damage;
+    [SerializeField] private int damage = 1;
 
     //Enemy Sprites
     [SerializeField] private List<Sprite> spriteList;
     [SerializeField] private Transform spawnStart;
 
     //enemy specifics
-    [SerializeField] private Transform transform;
     [SerializeField] private float angle;
 
     [SerializeField] private SpriteRenderer sr;
 
-
     private void Awake()
     {
         Start();
-
+        gameObject.SetActive(true);
     }
-
     void Start()
     {
-        gameObject.SetActive(true);
         gamemanager = gamemanagerObject.GetComponent<GameManager>();
+        text = _text.GetComponent<ChangeText>();
         type = Random.Range(0, 3);
 
         switch (type)
         {
             //red
             case 0:
-                health = 3;
-                speed = 0.05f;
-                damage = type + 1;
+                health = 3 + (gamemanager.waveNumber*2);//
+                speed = 0.05f + (float)gamemanager.waveNumber * 0.2f; //+(float)gamemanager.waveNumber * 0.2f
+                damage = type;
                 break;
             //green
             case 1:
-                health = 2;
-                speed = 0.07f;
-                damage = type + 1;
+                health = 2 + (gamemanager.waveNumber * 2);
+                speed = 0.07f + (float)gamemanager.waveNumber * 0.2f;
+                damage = type;
                 break;
             //blue
             case 2:
-                health = 1;
-                speed = 0.1f;
-                damage = type + 1;
+                health = 1 + (gamemanager.waveNumber * 2);
+                speed = 0.1f + (float)gamemanager.waveNumber * 0.2f;
+                damage = type;
                 break;
 
         }
@@ -73,13 +75,10 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         transform.position += transform.up * speed * Time.deltaTime;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            gamemanager.onEnemyDestroy();
-        }
+        
     }
 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -97,8 +96,18 @@ public class EnemyScript : MonoBehaviour
             {
                 GameObject bulletReference = collision.gameObject;
                 health -= bulletReference.GetComponent<Bullet>().damage;
-                Destroy(collision.gameObject);
-                gamemanager.onBulletDestroy();
+
+                gamemanager.destroyBullet(collision.gameObject);
+
+                if (health <= 0)
+                {
+                    //add some score here
+                    int currency = GlobalManager.Instance.Currency+(gamemanager.waveNumber*2);
+                    GlobalManager.Instance.Currency = currency;
+                    text.changeCurrencyText(currency);
+                    gamemanager.destroyEnemy(this.gameObject);
+                }
+
             }
             //if not the same type
             else
@@ -106,11 +115,27 @@ public class EnemyScript : MonoBehaviour
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }
         }
-
-        /*if(collision.gameObject.tag == "Player")
+        /*
+        if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
             Debug.Log("Collided with Enemy!");
-        }*/
+        }
+        */
+
     }
+
+
+    private void addCurrency()
+    {
+        
+    }
+
+    /*private void OnBecameInvisible()
+    {
+    //    gamemanager.enemyContainer.Remove(this.gameObject);
+    //    Destroy(this.gameObject);
+
+        gamemanager.destroyEnemy(this.gameObject);
+    }*/
 }

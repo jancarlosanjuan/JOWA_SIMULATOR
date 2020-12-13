@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyOnOutOfBounds : MonoBehaviour
+public class DestroyOnOutofBounds : MonoBehaviour
 {
-    [SerializeField] private GameObject gamemanagerObject;
+    [SerializeField] GameObject _gamemanager;
     private GameManager gamemanager;
-    // Start is called before the first frame update
-    private void OnBecameInvisible()
+
+    private void Start()
     {
-        Destroy(gameObject);
-        gamemanager.onEnemyDestroy();
-        gamemanager.onBulletDestroy();
+        gamemanager = _gamemanager.GetComponent<GameManager>();
     }
+    void Update()
+    {
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if (screenPosition.y > Screen.height || screenPosition.y < 0 || screenPosition.x < 0 || screenPosition.x > Screen.width)
+            gamemanager.destroyBullet(this.gameObject);
+    }
+    
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject GameManager;
+    private GameManager gamemanager;
     [SerializeField] private Transform playerPosition;
     [SerializeField] private GameObject playervar;
-    [SerializeField] private Transform transform;
+    //[SerializeField] private Transform transform;
     [SerializeField] private Transform midpoint;
     [SerializeField] private List<Sprite> spriteList;
     [SerializeField] private SpriteRenderer sr;
@@ -37,6 +39,7 @@ public class Bullet : MonoBehaviour
         diff.Normalize();
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+        
     }
 
     // Update is called once per frame
@@ -52,4 +55,16 @@ public class Bullet : MonoBehaviour
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
+   
+    /*private void OnBecameInvisible()
+    {
+        //   GameManager.GetComponent<GameManager>().bulletContainer.Remove(this.gameObject);
+        //    Destroy(this.gameObject);
+        if (GameManager.GetComponent<GameManager>() != null && this.gameObject != null)
+        {
+            Debug.Log("Does this work");
+            GameManager.GetComponent<GameManager>().destroyBullet(this.gameObject);
+        }
+        
+    }*/
 }
