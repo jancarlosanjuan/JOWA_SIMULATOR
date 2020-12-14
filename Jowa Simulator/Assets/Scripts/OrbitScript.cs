@@ -9,6 +9,7 @@ public class OrbitScript : MonoBehaviour
 	[SerializeField] Transform rotationCenter;
 	[SerializeField] Button aButton;
 	[SerializeField] Button dButton;
+	[SerializeField] Joystick joystick;
 
 	[SerializeField] float rotationRadius = 100.0f, angularSpeed = 0.0f;
 
@@ -27,11 +28,11 @@ public class OrbitScript : MonoBehaviour
 		posY = rotationCenter.position.y + Mathf.Sin(angle) * rotationRadius;
 		transform.position = new Vector2(posX, posY);
 
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) || joystick.Horizontal > 0)
         {
 			RotateClockwise();
 		}
-		else if (Input.GetKey(KeyCode.D))
+		else if (Input.GetKey(KeyCode.D) || joystick.Horizontal < 0)
         {
 			RotateCounterClockwise();
 		}
