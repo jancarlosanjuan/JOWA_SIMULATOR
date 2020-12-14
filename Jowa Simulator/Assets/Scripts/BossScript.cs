@@ -90,12 +90,6 @@ public class BossScript : MonoBehaviour
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
 
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Collided with Enemy");
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
-
         if (collision.gameObject.tag == "Bullet")
         {
             //check bullet type
