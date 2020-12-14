@@ -24,6 +24,7 @@ public class EnemyScript : MonoBehaviour
     //Enemy Sprites
     [SerializeField] private List<Sprite> spriteList;
     [SerializeField] private Transform spawnStart;
+    [SerializeField] private List<RuntimeAnimatorController> enemyAnimationList;
 
     //enemy specifics
     [SerializeField] private float angle;
@@ -41,6 +42,7 @@ public class EnemyScript : MonoBehaviour
         gamemanager = gamemanagerObject.GetComponent<GameManager>();
         text = _text.GetComponent<ChangeText>();
         type = Random.Range(0, 3);
+
 
         switch (type)
         {
@@ -70,6 +72,7 @@ public class EnemyScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(transform.forward * angle);
         transform.position = spawnStart.position;
         sr.sprite = spriteList[type];
+        this.GetComponent<Animator>().runtimeAnimatorController = enemyAnimationList[type];
     }
 
     // Update is called once per frame

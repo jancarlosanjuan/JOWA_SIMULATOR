@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private List<Sprite> spriteList;
     [SerializeField] private SpriteRenderer sr;
 
+    [SerializeField] private List<RuntimeAnimatorController> animatorList;
+
     //initialize these
     public int type;
     public float bulletspeed;
@@ -32,14 +34,13 @@ public class Bullet : MonoBehaviour
         type = playervar.GetComponent<PlayerVariables>().type;
         bulletspeed = playervar.GetComponent<PlayerVariables>().bulletSpeed;
         damage = playervar.GetComponent<PlayerVariables>().bulletDamage;
-
+        this.GetComponent<Animator>().runtimeAnimatorController = animatorList[type];
         sr.sprite = spriteList[type];
 
         Vector3 diff = midpoint.position - playerPosition.position;
         diff.Normalize();
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
-        
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);//-90
     }
 
     // Update is called once per frame

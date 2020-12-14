@@ -11,31 +11,49 @@ public class OrbitScript : MonoBehaviour
 	[SerializeField] Button dButton;
 	[SerializeField] Joystick joystick;
 
-	[SerializeField] float rotationRadius = 100.0f, angularSpeed = 0.0f;
+	[SerializeField] private float angularSpeed = 0.0f;
+	public float rotationRadius;
 
 	float posX, posY, angle = 0f;
-
+	private float oldWidth;
+	private float height;
+	private float width;
     void Start()
     {
+		//rotationRadius =   (Screen.width)/ (Screen.width / 4);
+		Camera cam = Camera.main;
+		height = 2f * cam.orthographicSize;
+		width = height * cam.aspect;
+		rotationRadius = width / 4;
+		oldWidth = width;
 		
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
+		oldWidth = width;
+		Camera cam = Camera.main;
+		height = 2f * cam.orthographicSize;
+		width = height * cam.aspect;
+		if(oldWidth != width)
+        {
+			rotationRadius = width / 4;
+		}
+		
 		posX = rotationCenter.position.x + Mathf.Cos(angle) * rotationRadius;
 		posY = rotationCenter.position.y + Mathf.Sin(angle) * rotationRadius;
 		transform.position = new Vector2(posX, posY);
 
-		if (Input.GetKey(KeyCode.A) || joystick.Horizontal > 0)
+		if (Input.GetKey(KeyCode.A) || joystick.Horizontal < 0)
         {
 			RotateClockwise();
 		}
-		else if (Input.GetKey(KeyCode.D) || joystick.Horizontal < 0)
+		else if (Input.GetKey(KeyCode.D) || joystick.Horizontal > 0)
         {
 			RotateCounterClockwise();
 		}
+
 		
 	}
 
