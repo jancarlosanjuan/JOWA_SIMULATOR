@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameObject gamemanagerObject;
     private GameManager gamemanager;
+    private GameObject spawn;
     [SerializeField] private int waveNumber;
 
     //wave counter text UI
@@ -31,24 +33,34 @@ public class EnemySpawner : MonoBehaviour
         
         waveNumber = gamemanager.waveNumber;
         int store = gamemanager.enemyContainer.Count;
-        
-        if (store == 0)
+
+        int bossStore = gamemanager.bossContainer.Count;
+
+        if (store == 0 && bossStore == 0)
         {
             gamemanager.waveNumber++;
-            
+
             Debug.Log("WAVE : " + gamemanager.waveNumber);
-            counterText.changeCurrencyText(gamemanager.waveNumber);
 
-            for (int i = 0; i<waveNumber + 10; i++)
+            if (gamemanager.waveNumber % 2 == 0)
             {
-                GameObject spawn = Instantiate(prefab, spawnLocation.position, Quaternion.identity);
-                spawn.SetActive(true);
-                gamemanager.enemyContainer.Add(spawn);
+                Debug.Log("Boss Wave!");
+                for (int i = 0; i < 3; i++)
+                {
+                    spawn = Instantiate(bossPrefab, spawnLocation.position, Quaternion.identity);
+                    spawn.SetActive(true);
+                    gamemanager.bossContainer.Add(spawn);
+                }
             }
-            
-
+            else
+            {
+                for (int i = 0; i < waveNumber + 10; i++)
+                {
+                    spawn = Instantiate(prefab, spawnLocation.position, Quaternion.identity);
+                    spawn.SetActive(true);
+                    gamemanager.enemyContainer.Add(spawn);
+                }
+            }
         }
-        
-        
     }
 }

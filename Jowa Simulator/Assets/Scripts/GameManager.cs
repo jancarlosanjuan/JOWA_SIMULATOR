@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int waveNumber = 0;
     public bool paused;
     public List<GameObject> enemyContainer;
+    public List<GameObject> bossContainer;
     public List<GameObject> bulletContainer;
     public List<GameObject> explosionContainer;
     public int enemyCount;
@@ -75,6 +76,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void destroyBoss(GameObject bosstodestroy)
+    {
+        for (int i = 0; i < bossContainer.Count; i++)
+        {
+            if (bossContainer[i] == bosstodestroy && bossContainer[i] != null && bosstodestroy != null)
+            {
+                //create explosion instance
+                Transform _transform = bossContainer[i].transform;
+                GameObject explosion = Instantiate(spriteExplosion, _transform.position, Quaternion.identity);
+                explosion.SetActive(true);
+                explosionContainer.Add(explosion.gameObject);
+
+
+                //enemyContainer.Remove(enemyContainer[i]);
+                bossContainer.RemoveAt(i);
+                Destroy(bosstodestroy.gameObject);
+            }
+        }
+    }
     public void destroyBullet(GameObject bullettodestroy)
     {
         for (int i = 0; i < bulletContainer.Count; i++)
