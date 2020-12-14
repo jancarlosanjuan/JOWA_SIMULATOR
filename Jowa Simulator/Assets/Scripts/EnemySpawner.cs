@@ -9,6 +9,10 @@ public class EnemySpawner : MonoBehaviour
     private GameManager gamemanager;
     [SerializeField] private int waveNumber;
 
+    //wave counter text UI
+    [SerializeField] private GameObject _counterText;
+    private ChangeText counterText;
+
     //spawn location
     [SerializeField] private Transform spawnLocation; 
     // Start is called before the first frame update
@@ -16,6 +20,9 @@ public class EnemySpawner : MonoBehaviour
     {
         gamemanager = gamemanagerObject.GetComponent<GameManager>();
         waveNumber = gamemanager.waveNumber;
+
+        counterText = _counterText.GetComponent<ChangeText>();
+        counterText.changeCurrencyText(waveNumber);
     }
 
     // Update is called once per frame
@@ -30,9 +37,9 @@ public class EnemySpawner : MonoBehaviour
             gamemanager.waveNumber++;
             
             Debug.Log("WAVE : " + gamemanager.waveNumber);
-            
-            
-            for(int i = 0; i<waveNumber + 10; i++)
+            counterText.changeCurrencyText(gamemanager.waveNumber);
+
+            for (int i = 0; i<waveNumber + 10; i++)
             {
                 GameObject spawn = Instantiate(prefab, spawnLocation.position, Quaternion.identity);
                 spawn.SetActive(true);
