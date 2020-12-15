@@ -40,7 +40,8 @@ public class Bullet : MonoBehaviour
         Vector3 diff = midpoint.position - playerPosition.position;
         diff.Normalize();
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90);//-90 inwards // +90 outwards
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ - playervar.GetComponent<PlayerVariables>().bulletDirection);//-90 inwards // +90 outwards
+
     }
 
     // Update is called once per frame
