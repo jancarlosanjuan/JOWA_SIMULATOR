@@ -19,7 +19,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
-            shootBullet();
+            //shootBullet();
         }
     }
 

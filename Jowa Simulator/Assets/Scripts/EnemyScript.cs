@@ -24,6 +24,7 @@ public class EnemyScript : MonoBehaviour
     //Enemy Sprites
     [SerializeField] private List<Sprite> spriteList;
     [SerializeField] private Transform spawnStart;
+    [SerializeField] private List<RuntimeAnimatorController> enemyAnimationList;
 
     //enemy specifics
     [SerializeField] private float angle;
@@ -42,24 +43,25 @@ public class EnemyScript : MonoBehaviour
         text = _text.GetComponent<ChangeText>();
         type = Random.Range(0, 3);
 
+
         switch (type)
         {
             //red
             case 0:
                 health = 3 + (gamemanager.waveNumber*2);//
-                speed = 0.05f + (float)gamemanager.waveNumber * 0.2f; //+(float)gamemanager.waveNumber * 0.2f
+                speed = 0.05f + (float)gamemanager.waveNumber * 0.02f; //+(float)gamemanager.waveNumber * 0.2f
                 damage = type;
                 break;
             //green
             case 1:
                 health = 2 + (gamemanager.waveNumber * 2);
-                speed = 0.07f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.07f + (float)gamemanager.waveNumber * 0.02f;
                 damage = type;
                 break;
             //blue
             case 2:
                 health = 1 + (gamemanager.waveNumber * 2);
-                speed = 0.1f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.1f + (float)gamemanager.waveNumber * 0.02f;
                 damage = type;
                 break;
 
@@ -70,6 +72,7 @@ public class EnemyScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(transform.forward * angle);
         transform.position = spawnStart.position;
         sr.sprite = spriteList[type];
+        this.GetComponent<Animator>().runtimeAnimatorController = enemyAnimationList[type];
     }
 
     // Update is called once per frame
@@ -116,14 +119,13 @@ public class EnemyScript : MonoBehaviour
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }
         }
-        /*
+        
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
             Debug.Log("Collided with Enemy!");
         }
-        */
-
+    
     }
 
 

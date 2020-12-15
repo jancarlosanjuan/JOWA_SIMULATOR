@@ -5,9 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameObject gamemanagerObject;
     private GameManager gamemanager;
+    private GameObject spawn;
     [SerializeField] private int waveNumber;
+
+    //wave counter text UI
+    [SerializeField] private GameObject _counterText;
+    private ChangeText counterText;
 
     //spawn location
     [SerializeField] private Transform spawnLocation; 
@@ -16,6 +22,9 @@ public class EnemySpawner : MonoBehaviour
     {
         gamemanager = gamemanagerObject.GetComponent<GameManager>();
         waveNumber = gamemanager.waveNumber;
+
+        counterText = _counterText.GetComponent<ChangeText>();
+        counterText.changeCurrencyText(waveNumber);
     }
 
     // Update is called once per frame
@@ -24,24 +33,34 @@ public class EnemySpawner : MonoBehaviour
         
         waveNumber = gamemanager.waveNumber;
         int store = gamemanager.enemyContainer.Count;
-        
-        if (store == 0)
+
+        int bossStore = gamemanager.bossContainer.Count;
+
+        if (store == 0 && bossStore == 0)
         {
             gamemanager.waveNumber++;
-            
-            Debug.Log("WAVE : " + gamemanager.waveNumber);
-            
-            
-            for(int i = 0; i<waveNumber + 10; i++)
-            {
-                GameObject spawn = Instantiate(prefab, spawnLocation.position, Quaternion.identity);
-                spawn.SetActive(true);
-                gamemanager.enemyContainer.Add(spawn);
-            }
-            
 
+            Debug.Log("WAVE : " + gamemanager.waveNumber);
+
+            if (gamemanager.waveNumber % 2 == 0)
+            {
+                Debug.Log("Boss Wave!");
+                for (int i = 0; i < 1; i++)
+                {
+                    spawn = Instantiate(bossPrefab, spawnLocation.position, Quaternion.identity);
+                    spawn.SetActive(true);
+                    gamemanager.bossContainer.Add(spawn);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < waveNumber + 10; i++)
+                {
+                    spawn = Instantiate(prefab, spawnLocation.position, Quaternion.identity);
+                    spawn.SetActive(true);
+                    gamemanager.enemyContainer.Add(spawn);
+                }
+            }
         }
-        
-        
     }
 }

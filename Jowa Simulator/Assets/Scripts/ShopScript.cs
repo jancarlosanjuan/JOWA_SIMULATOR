@@ -7,18 +7,37 @@ using UnityEngine.SceneManagement;
 public class ShopScript : MonoBehaviour
 {
     public Text currencyText;
+
+    public Text weaponText;
+    public Text healthText;
+    public Text speedText;
     public Text shieldText;
+
+    public Text weaponButtonText;
+    public Text healthButtonText;
+    public Text speedButtonText;
+    public Text shieldButtonText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         currencyText.text = "Affection Points: " + GlobalManager.Instance.Currency;
+        weaponText.text = "Weapon Damage: " + (10 + GlobalManager.Instance.DamageAdd);
+        healthText.text = "Max Health: " + (10 + GlobalManager.Instance.HealthAdd);
+        speedText.text = "Player Speed Multiplier: " + GlobalManager.Instance.SpeedMultiplier;
         shieldText.text = "Currently Owned: " + GlobalManager.Instance.Shields;
+
+        weaponButtonText.text = GlobalManager.Instance.damagePrice.ToString();
+        healthButtonText.text = GlobalManager.Instance.healthPrice.ToString();
+        speedButtonText.text = GlobalManager.Instance.speedPrice.ToString();
+        shieldButtonText.text = GlobalManager.Instance.shieldPrice.ToString();
+
     }
 
     public void LoadMainMenu()
@@ -28,27 +47,47 @@ public class ShopScript : MonoBehaviour
 
     public void UpgradeWeapon()
     {
-        Debug.Log("Weapon enhanced!");
-        //insert weapon enhance script
+        if (GlobalManager.Instance.Currency > 0)
+        {
+            Debug.Log("Weapon enhanced!");
+            GlobalManager.Instance.Currency -= GlobalManager.Instance.damagePrice;
+            GlobalManager.Instance.DamageAdd += 5;
+            GlobalManager.Instance.damagePrice += 5;
+        }
     }
 
     public void UpgradeHealth()
     {
-        Debug.Log("Health enhanced!");
-        //insert health enhance script
+        if (GlobalManager.Instance.Currency > 0)
+        {
+            Debug.Log("Health enhanced!");
+            GlobalManager.Instance.Currency -= GlobalManager.Instance.healthPrice;
+            GlobalManager.Instance.HealthAdd += 5;
+            GlobalManager.Instance.healthPrice += 5;
+        }
     }
 
     public void UpgradeSpeed()
     {
-        Debug.Log("Movement speed enhanced!");
-        //insert movement speed enhance script
+        if (GlobalManager.Instance.Currency > 0)
+        {
+            Debug.Log("Movement speed enhanced!");
+            GlobalManager.Instance.Currency -= GlobalManager.Instance.speedPrice;
+            GlobalManager.Instance.SpeedMultiplier += 0.3f;
+            GlobalManager.Instance.speedPrice += 5;
+        }
     }
 
     public void BuyShield()
     {
-        Debug.Log("Shield Bought!");
-        GlobalManager.Instance.Currency -= 500;
-        GlobalManager.Instance.Shields += 1;
+        if (GlobalManager.Instance.Currency > 0)
+        {
+            Debug.Log("Shield Bought!");
+            GlobalManager.Instance.Currency -= GlobalManager.Instance.shieldPrice;
+            GlobalManager.Instance.Shields += 1;
+            GlobalManager.Instance.shieldPrice += 10;
+
+        }
     }
 
     public void LoadGame()

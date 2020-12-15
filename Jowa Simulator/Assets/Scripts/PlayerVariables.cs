@@ -8,6 +8,8 @@ public class PlayerVariables : MonoBehaviour
     private ChangeText healthText;
     [SerializeField] private GameObject _currencyText;
     private ChangeText currencyText;
+//    [SerializeField] private GameObject _shieldText;
+ //   private ChangeText shieldText;
     // Start is called before the first frame update
 
     //these are also upgradable;
@@ -19,18 +21,23 @@ public class PlayerVariables : MonoBehaviour
     public int type;
     public int bulletDamage;
     public int numShields;
+    [Range(-1.0f, 1.0f)] public int bulletDirection;
     void Start()
     {
-        bulletDamage = 10;
-        health = 10;
-        bulletSpeed = 1;
+        bulletDamage = 10 + GlobalManager.Instance.DamageAdd;
+        health = 10 + GlobalManager.Instance.HealthAdd;
+        bulletSpeed = 1 * GlobalManager.Instance.SpeedMultiplier;
         currency = GlobalManager.Instance.Currency;
+//        numShields = GlobalManager.Instance.Shields;
 
         healthText = _healthText.GetComponent<ChangeText>();
         healthText.changeCurrencyText(health);
 
         currencyText = _currencyText.GetComponent<ChangeText>();
         currencyText.changeCurrencyText(currency);
+
+//        shieldText = _shieldText.GetComponent<ChangeText>();
+ //       shieldText.changeCurrencyText(numShields);
     }
 
     // Update is called once per frame

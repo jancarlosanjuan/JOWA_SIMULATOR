@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject spriteExplosion; 
     public int waveNumber = 0;
     public bool paused;
     public List<GameObject> enemyContainer;
+    public List<GameObject> bossContainer;
     public List<GameObject> bulletContainer;
+    public List<GameObject> explosionContainer;
     public int enemyCount;
+
+    
 
     private void Awake()
     {
@@ -35,6 +40,15 @@ public class GameManager : MonoBehaviour
             }
             enemyContainer.Clear();
         }*/
+        for(int i = 0; i< explosionContainer.Count; i++)
+        {
+            if(explosionContainer[i].GetComponent<Animator>().GetBool("Exploded"))
+            {
+                //Debug.LogError("THIS WORKS");
+                Destroy(explosionContainer[i].gameObject);
+                explosionContainer.RemoveAt(i);
+            }
+        }
     }
 
     public int getEnemyCount()
@@ -48,19 +62,46 @@ public class GameManager : MonoBehaviour
         {
             if(enemyContainer[i] == enemytodestroy && enemyContainer[i] != null && enemytodestroy != null)
             {
-                enemyContainer.Remove(enemyContainer[i]);
+                //create explosion instance
+                Transform _transform = enemyContainer[i].transform;
+                GameObject explosion = Instantiate(spriteExplosion, _transform.position, Quaternion.identity);
+                explosion.SetActive(true);
+                explosionContainer.Add(explosion.gameObject);
+
+
+                //enemyContainer.Remove(enemyContainer[i]);
+                enemyContainer.RemoveAt(i);
                 Destroy(enemytodestroy.gameObject);
             }
         }
     }
 
+    public void destroyBoss(GameObject bosstodestroy)
+    {
+        for (int i = 0; i < bossContainer.Count; i++)
+        {
+            if (bossContainer[i] == bosstodestroy && bossContainer[i] != null && bosstodestroy != null)
+            {
+                //create explosion instance
+                Transform _transform = bossContainer[i].transform;
+                GameObject explosion = Instantiate(spriteExplosion, _transform.position, Quaternion.identity);
+                explosion.SetActive(true);
+                explosionContainer.Add(explosion.gameObject);
+
+
+                //enemyContainer.Remove(enemyContainer[i]);
+                bossContainer.RemoveAt(i);
+                Destroy(bosstodestroy.gameObject);
+            }
+        }
+    }
     public void destroyBullet(GameObject bullettodestroy)
     {
         for (int i = 0; i < bulletContainer.Count; i++)
         {
             if (bulletContainer[i] == bullettodestroy && bulletContainer[i] != null && bullettodestroy != null)
             {
-                bulletContainer.Remove(bulletContainer[i]);
+                bulletContainer.RemoveAt(i);
                 Destroy(bullettodestroy.gameObject);
             }
         }

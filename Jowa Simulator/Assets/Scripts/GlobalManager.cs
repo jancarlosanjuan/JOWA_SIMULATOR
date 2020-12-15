@@ -10,7 +10,7 @@ public class GlobalManager : MonoBehaviour
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = FindObjectOfType<GlobalManager>();
                 if (_instance == null)
@@ -24,11 +24,11 @@ public class GlobalManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
-            
+
         }
         else if (_instance != this)
         {
@@ -42,6 +42,14 @@ public class GlobalManager : MonoBehaviour
 
     //variables here
     public int Currency = 0;
+
+    public int DamageAdd = 0;
+    public int HealthAdd = 0;
+    public float SpeedMultiplier = 1.0f;
     public int Shields = 0;
-  
+
+    public int damagePrice = 5;
+    public int healthPrice = 5;
+    public int speedPrice = 5;
+    public int shieldPrice = 15;
 }
