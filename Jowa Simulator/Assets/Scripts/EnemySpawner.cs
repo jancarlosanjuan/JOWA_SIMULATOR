@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
             if (gamemanager.waveNumber % 2 == 0)
             {
                 Debug.Log("Boss Wave!");
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     spawn = Instantiate(bossPrefab, spawnLocation.position, Quaternion.identity);
                     spawn.SetActive(true);

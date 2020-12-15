@@ -48,19 +48,19 @@ public class BossScript : MonoBehaviour
             //red
             case 0:
                 health = 10 + (gamemanager.waveNumber * 2);//
-                speed = 0.05f + (float)gamemanager.waveNumber * 0.2f; //+(float)gamemanager.waveNumber * 0.2f
+                speed = 0.05f + (float)gamemanager.waveNumber * 0.04f; //+(float)gamemanager.waveNumber * 0.2f
                 damage = type;
                 break;
             //green
             case 1:
                 health = 8 + (gamemanager.waveNumber * 2);
-                speed = 0.07f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.07f + (float)gamemanager.waveNumber * 0.04f;
                 damage = type;
                 break;
             //blue
             case 2:
                 health = 5 + (gamemanager.waveNumber * 2);
-                speed = 0.1f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.1f + (float)gamemanager.waveNumber * 0.04f;
                 damage = type;
                 break;
 

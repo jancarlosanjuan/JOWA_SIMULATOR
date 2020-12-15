@@ -6,6 +6,7 @@ public class GestureManager : MonoBehaviour
 {
     public static GestureManager Instance;
     public SwipeProperty _swipeProperty;
+    public TwoFingerPanProperty _twoFingerPanProperty;
     public PlayerMode playerMode;
     private Vector2 startPoint = Vector2.zero;
     private Vector2 endPoint = Vector2.zero;
@@ -40,7 +41,13 @@ public class GestureManager : MonoBehaviour
                 gesturefinger1 = Input.GetTouch(0);
                 gesturefinger2 = Input.GetTouch(1);
 
-                //if((gesturefinger1.phase == TouchPhase.Moved && gesturefinger2.phase == TouchPhase))
+                if(gesturefinger1.phase == TouchPhase.Moved && gesturefinger2.phase == TouchPhase.Moved &&
+                    Vector2.Distance(gesturefinger1.position, gesturefinger2.position) <=
+                    (_twoFingerPanProperty.maxDistance * Screen.dpi))
+                {
+                    FireTwoFingerPanGesture();
+                    
+                }
             }
         }
     }
@@ -74,6 +81,11 @@ public class GestureManager : MonoBehaviour
         {
             gestureTime += Time.deltaTime;
         }
+    }
+
+    private void FireTwoFingerPanGesture()
+    {
+        Debug.Log("Two Finger Pan");
     }
 
     private void FireSwipeEvents()
