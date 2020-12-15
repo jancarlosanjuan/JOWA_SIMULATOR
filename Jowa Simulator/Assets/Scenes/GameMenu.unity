@@ -1849,9 +1849,11 @@ MonoBehaviour:
   _swipeProperty:
     minSwipeDistance: 5
     swipeTime: 0.7
-  _twoFingerPanProperty:
-    maxDistance: 0.4
+  _rotateProperty:
+    minDistance: 0.75
+    minChange: 0.4
   playerMode: {fileID: 1902341500}
+  playerVar: {fileID: 1902341502}
 --- !u!4 &410377006
 Transform:
   m_ObjectHideFlags: 0
@@ -10551,7 +10553,7 @@ MonoBehaviour:
   type: 0
   bulletDamage: 1
   numShields: 0
-  bulletDirection: 0
+  bulletDirection: 90
 --- !u!61 &1902341503
 BoxCollider2D:
   m_ObjectHideFlags: 0

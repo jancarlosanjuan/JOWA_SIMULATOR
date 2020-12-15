@@ -21,7 +21,7 @@ public class PlayerVariables : MonoBehaviour
     public int type;
     public int bulletDamage;
     public int numShields;
-    [Range(-1.0f, 1.0f)] public int bulletDirection;
+    public float bulletDirection;
     void Start()
     {
         bulletDamage = 10 + GlobalManager.Instance.DamageAdd;
@@ -72,5 +72,10 @@ public class PlayerVariables : MonoBehaviour
         bulletSpeed = 0.2f;
     }
 
-    
+    public void setBulletDirection(float angle)
+    {
+        bulletDirection = angle;
+    }
+
+
 }
