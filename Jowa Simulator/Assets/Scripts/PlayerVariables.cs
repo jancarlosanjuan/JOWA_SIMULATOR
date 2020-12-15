@@ -21,6 +21,7 @@ public class PlayerVariables : MonoBehaviour
     public int type;
     public int bulletDamage;
     public int numShields;
+    [Range(-1.0f, 1.0f)] public int bulletDirection;
     void Start()
     {
         bulletDamage = 10 + GlobalManager.Instance.DamageAdd;

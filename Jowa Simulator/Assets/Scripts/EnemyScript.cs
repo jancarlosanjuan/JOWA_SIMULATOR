@@ -49,19 +49,19 @@ public class EnemyScript : MonoBehaviour
             //red
             case 0:
                 health = 3 + (gamemanager.waveNumber*2);//
-                speed = 0.05f + (float)gamemanager.waveNumber * 0.2f; //+(float)gamemanager.waveNumber * 0.2f
+                speed = 0.05f + (float)gamemanager.waveNumber * 0.02f; //+(float)gamemanager.waveNumber * 0.2f
                 damage = type;
                 break;
             //green
             case 1:
                 health = 2 + (gamemanager.waveNumber * 2);
-                speed = 0.07f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.07f + (float)gamemanager.waveNumber * 0.02f;
                 damage = type;
                 break;
             //blue
             case 2:
                 health = 1 + (gamemanager.waveNumber * 2);
-                speed = 0.1f + (float)gamemanager.waveNumber * 0.2f;
+                speed = 0.1f + (float)gamemanager.waveNumber * 0.02f;
                 damage = type;
                 break;
 

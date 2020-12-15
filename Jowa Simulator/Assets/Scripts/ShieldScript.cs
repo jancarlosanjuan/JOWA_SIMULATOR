@@ -6,6 +6,7 @@ public class ShieldScript : MonoBehaviour
 {
     private GameManager gamemanager;
     [SerializeField] private GameObject gamemanagerObject;
+    private float shieldCooldown;
 
     [SerializeField] private GameObject _shieldText;
     private ChangeText shieldText;
@@ -25,6 +26,12 @@ public class ShieldScript : MonoBehaviour
         {
             Begone();
         }
+
+        if(shieldCooldown > 0)
+        {
+            shieldCooldown -= Time.deltaTime;
+            Debug.Log("Shield Cooldown Time: " + shieldCooldown);
+        }
     }
 
     private void OnDestroy()
@@ -34,7 +41,7 @@ public class ShieldScript : MonoBehaviour
 
     public void Begone()
     {
-        if(GlobalManager.Instance.Shields > 0)
+        if(GlobalManager.Instance.Shields > 0 && shieldCooldown <= 0)
         {
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -46,7 +53,10 @@ public class ShieldScript : MonoBehaviour
             }
             GlobalManager.Instance.Shields--;
             shieldText.changeCurrencyText(GlobalManager.Instance.Shields);
-            Debug.Log("Enemies: " + gamemanager.enemyContainer.Count);
+            //Debug.Log("Enemies: " + gamemanager.enemyContainer.Count);
+
+            Debug.Log("Shield Entering Cooldown!");
+            shieldCooldown = 5.0f;
         }
     }
 
