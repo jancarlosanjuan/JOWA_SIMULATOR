@@ -42,6 +42,12 @@ public class OrbitScript : MonoBehaviour
 		posY = rotationCenter.position.y + Mathf.Sin(angle) * rotationRadius;
 		transform.position = new Vector2(posX, posY);
 
+		//rotation
+		Vector3 diff = rotationCenter.position - transform.position;
+		diff.Normalize();
+		float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
+
 		if (Input.GetKey(KeyCode.A) || joystick.Horizontal < 0)
         {
 			RotateClockwise();

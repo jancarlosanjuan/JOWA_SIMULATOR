@@ -32,6 +32,7 @@ public class EnemyOutOfBounds : MonoBehaviour
             {
                 playervariables.gameObject.GetComponent<SceneChanger>().onButtonClicked();
             }
+            GlobalAudio.Instance.playSound("EnemyDeath", 1f);
             gamemanager.destroyEnemy(this.gameObject);
         }
             
