@@ -21,7 +21,8 @@ public class PlayerVariables : MonoBehaviour
     public int type;
     public int bulletDamage;
     public int numShields;
-    [Range(-1.0f, 1.0f)] public int bulletDirection;
+    //[Range(-1.0f, 2.0f)] 
+    public float bulletDirection;
     void Start()
     {
         bulletDamage = 10 + GlobalManager.Instance.DamageAdd;
@@ -49,7 +50,6 @@ public class PlayerVariables : MonoBehaviour
             GlobalManager.Instance.Currency = currency;
             Debug.Log("CURRENCY IS: " + GlobalManager.Instance.Currency);
         }*/
-
     }
     public void setHealth(int newhealth)
     {
@@ -63,6 +63,11 @@ public class PlayerVariables : MonoBehaviour
     public void setMovementSpeed(float newspeed)
     {
         movementSpeed = newspeed;
+    }
+
+    public void setBulletDirection(float angle)
+    {
+        bulletDirection = angle;
     }
 
     public void setPlayerType(int newtype)
