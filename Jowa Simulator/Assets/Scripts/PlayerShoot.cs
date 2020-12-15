@@ -26,5 +26,6 @@ public class PlayerShoot : MonoBehaviour
     public void shootBullet()
     {
         bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
+        GlobalAudio.Instance.playSound("Shoot", 1);
     }
 }

@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
 
     public void onButtonClicked()
     {
+        GlobalAudio.Instance.playSound("ChangeScene", 1f);
         SceneManager.LoadScene(SceneName);
     }
 }

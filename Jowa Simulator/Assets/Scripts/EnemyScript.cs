@@ -109,6 +109,7 @@ public class EnemyScript : MonoBehaviour
                     int currency = GlobalManager.Instance.Currency+(gamemanager.waveNumber*2);
                     GlobalManager.Instance.Currency = currency;
                     text.changeCurrencyText(currency);
+                    GlobalAudio.Instance.playSound("EnemyDeath", 1f);
                     gamemanager.destroyEnemy(this.gameObject);
                 }
 

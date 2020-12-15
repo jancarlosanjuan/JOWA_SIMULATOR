@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         waveNumber = gamemanager.waveNumber;
 
         counterText = _counterText.GetComponent<ChangeText>();
-        counterText.changeCurrencyText(waveNumber);
+     //   counterText.changeCurrencyText(waveNumber+1);
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         if (store == 0 && bossStore == 0)
         {
             gamemanager.waveNumber++;
-
+            counterText.changeCurrencyText(gamemanager.waveNumber);
             Debug.Log("WAVE : " + gamemanager.waveNumber);
 
             if (gamemanager.waveNumber % 2 == 0)
