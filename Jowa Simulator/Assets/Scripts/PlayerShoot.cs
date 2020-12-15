@@ -25,6 +25,9 @@ public class PlayerShoot : MonoBehaviour
 
     public void shootBullet()
     {
+        this.gameObject.GetComponent<Animator>().SetBool("isAttacking", true);
+       // this.gameObject.GetComponent<Animator>().loo
         bulletContainer.GetComponent<BulletSpawner>().spawnBullets();
+        GlobalAudio.Instance.playSound("Shoot", 1);
     }
 }

@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class OrbitScript : MonoBehaviour
 {
-	[SerializeField] Rigidbody2D character;
 	[SerializeField] Transform rotationCenter;
-	[SerializeField] Button aButton;
-	[SerializeField] Button dButton;
 	[SerializeField] Joystick joystick;
 
 	[SerializeField] private float angularSpeed = 0.0f;
@@ -44,6 +41,12 @@ public class OrbitScript : MonoBehaviour
 		posX = rotationCenter.position.x + Mathf.Cos(angle) * rotationRadius;
 		posY = rotationCenter.position.y + Mathf.Sin(angle) * rotationRadius;
 		transform.position = new Vector2(posX, posY);
+
+		//rotation
+		Vector3 diff = rotationCenter.position - transform.position;
+		diff.Normalize();
+		float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
 
 		if (Input.GetKey(KeyCode.A) || joystick.Horizontal < 0)
         {

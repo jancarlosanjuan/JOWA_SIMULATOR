@@ -53,6 +53,7 @@ public class ShopScript : MonoBehaviour
             GlobalManager.Instance.Currency -= GlobalManager.Instance.damagePrice;
             GlobalManager.Instance.DamageAdd += 5;
             GlobalManager.Instance.damagePrice += 5;
+            GlobalAudio.Instance.playSound("ButtonClick", 1f);
         }
     }
 
@@ -64,6 +65,7 @@ public class ShopScript : MonoBehaviour
             GlobalManager.Instance.Currency -= GlobalManager.Instance.healthPrice;
             GlobalManager.Instance.HealthAdd += 5;
             GlobalManager.Instance.healthPrice += 5;
+            GlobalAudio.Instance.playSound("ButtonClick", 1f);
         }
     }
 
@@ -75,6 +77,7 @@ public class ShopScript : MonoBehaviour
             GlobalManager.Instance.Currency -= GlobalManager.Instance.speedPrice;
             GlobalManager.Instance.SpeedMultiplier += 0.3f;
             GlobalManager.Instance.speedPrice += 5;
+            GlobalAudio.Instance.playSound("ButtonClick", 1f);
         }
     }
 
@@ -86,12 +89,13 @@ public class ShopScript : MonoBehaviour
             GlobalManager.Instance.Currency -= GlobalManager.Instance.shieldPrice;
             GlobalManager.Instance.Shields += 1;
             GlobalManager.Instance.shieldPrice += 10;
-
+            GlobalAudio.Instance.playSound("ButtonClick", 1f);
         }
     }
 
     public void LoadGame()
     {
         SceneManager.LoadScene("GameMenu");
+        GlobalAudio.Instance.playSound("ChangeScene", 1f);
     }
 }
