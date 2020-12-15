@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
             Debug.Log("WAVE : " + gamemanager.waveNumber);
 
-            if (gamemanager.waveNumber % 2 == 0)
+            if (gamemanager.waveNumber % 5 == 0)
             {
                 Debug.Log("Boss Wave!");
                 for (int i = 0; i < 1; i++)

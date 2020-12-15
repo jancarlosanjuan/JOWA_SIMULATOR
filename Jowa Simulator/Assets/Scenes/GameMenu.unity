@@ -1944,7 +1944,14 @@ MonoBehaviour:
   _swipeProperty:
     minSwipeDistance: 5
     swipeTime: 0.7
+<<<<<<< Updated upstream
+=======
+  _rotateProperty:
+    minDistance: 0.75
+    minChange: 0.4
+>>>>>>> Stashed changes
   playerMode: {fileID: 1902341500}
+  playerVar: {fileID: 1902341502}
 --- !u!4 &410377006
 Transform:
   m_ObjectHideFlags: 0
@@ -10581,6 +10588,10 @@ MonoBehaviour:
   type: 0
   bulletDamage: 1
   numShields: 0
+<<<<<<< Updated upstream
+=======
+  bulletDirection: 90
+>>>>>>> Stashed changes
 --- !u!61 &1902341503
 BoxCollider2D:
   m_ObjectHideFlags: 0
