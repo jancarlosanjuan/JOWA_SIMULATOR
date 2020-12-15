@@ -47,7 +47,8 @@ public class SpriteScaler : MonoBehaviour
             if (width > height)
             {
                 Debug.Log("LANDSCAPE MODE");
-                this.gameObject.transform.localScale = new Vector3((height / width), (height / width), 0) * multiplyerLandscape;
+                this.gameObject.transform.localScale = new Vector3((height / width), (height / width), 0) * multiplyerLandscape;//multiplyerLandscape
+                //this.gameObject.transform.localScale = new Vector3(cam.aspect, cam.aspect, 0);
             }
             //portrait
             else

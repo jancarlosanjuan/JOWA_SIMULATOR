@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class OrbitScript : MonoBehaviour
 {
-	[SerializeField] Rigidbody2D character;
 	[SerializeField] Transform rotationCenter;
-	[SerializeField] Button aButton;
-	[SerializeField] Button dButton;
 	[SerializeField] Joystick joystick;
 
 	[SerializeField] private float angularSpeed = 0.0f;
