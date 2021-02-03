@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AccelerometerScript
+    - AnimationBoolSet
     - BossOutofBounds
     - BossScript
     - Bullet
@@ -17,9 +18,11 @@ ScriptsOnlyBuild:
     - GameControlPanelScript
     - GameManager
     - GestureManager
+    - GlobalAudio
     - GlobalManager
     - MainMenuScript
     - OnExplosion
+    - OnMenuStart
     - OptionsPanelScript
     - OrbitScript
     - PlayerMode
@@ -33,8 +36,6 @@ ScriptsOnlyBuild:
     - ToggleScript
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
-    Unity.2D.Sprite.Editor.dll:
-    - UnityEditor.U2D.Sprites.SpriteEditorWindow
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -94,6 +95,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -141,55 +144,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12530}
     - Class: 114
-      Script: {instanceID: 12686}
+      Script: {instanceID: 12688}
     - Class: 114
-      Script: {instanceID: 12744}
+      Script: {instanceID: 12746}
     - Class: 114
-      Script: {instanceID: 12768}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12858}
     - Class: 114
-      Script: {instanceID: 12964}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 13064}
+      Script: {instanceID: 12970}
     - Class: 114
-      Script: {instanceID: 13134}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 13140}
     - Class: 114
-      Script: {instanceID: 13232}
+      Script: {instanceID: 13224}
     - Class: 114
-      Script: {instanceID: 13284}
+      Script: {instanceID: 13238}
     - Class: 114
-      Script: {instanceID: 13342}
+      Script: {instanceID: 13290}
     - Class: 114
-      Script: {instanceID: 13528}
+      Script: {instanceID: 13348}
     - Class: 114
-      Script: {instanceID: 13536}
+      Script: {instanceID: 13534}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13542}
     - Class: 114
-      Script: {instanceID: 13732}
+      Script: {instanceID: 13718}
     - Class: 114
-      Script: {instanceID: 13802}
+      Script: {instanceID: 13738}
     - Class: 114
-      Script: {instanceID: 13826}
+      Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 13878}
+      Script: {instanceID: 13832}
     - Class: 114
-      Script: {instanceID: 14394}
+      Script: {instanceID: 13884}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 13890}
     - Class: 114
-      Script: {instanceID: 14518}
+      Script: {instanceID: 14402}
     - Class: 114
-      Script: {instanceID: 14538}
+      Script: {instanceID: 14490}
     - Class: 114
-      Script: {instanceID: 14560}
+      Script: {instanceID: 14526}
     - Class: 114
-      Script: {instanceID: 14584}
+      Script: {instanceID: 14546}
     - Class: 114
-      Script: {instanceID: 14600}
+      Script: {instanceID: 14568}
+    - Class: 114
+      Script: {instanceID: 14592}
+    - Class: 114
+      Script: {instanceID: 14610}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -223,6 +230,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -244,13 +253,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12544}
     - Class: 114
-      Script: {instanceID: 12862}
+      Script: {instanceID: 12864}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 13878}
+      Script: {instanceID: 13224}
     - Class: 114
-      Script: {instanceID: 14518}
+      Script: {instanceID: 13884}
+    - Class: 114
+      Script: {instanceID: 14526}
+    - Class: 114
+      Script: {instanceID: 14604}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -301,11 +314,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 13224}
     - Class: 114
-      Script: {instanceID: 13878}
+      Script: {instanceID: 13884}
     - Class: 114
-      Script: {instanceID: 14518}
+      Script: {instanceID: 14526}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -433,7 +446,7 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
-      Hash: e5603e8bb4703e5af64f430971f65b44
+      Hash: d18d4930ad0075f4ead3c7e2c65567c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OrbitScript
@@ -685,7 +698,7 @@ ScriptsOnlyBuild:
     className: AccelerometerScript
   - hash:
       serializedVersion: 2
-      Hash: 82878d9e8cbd1328953de43ec2d2ae97
+      Hash: 72dbe5cff87afd6517da94cf2bfe255b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GestureManager
@@ -713,6 +726,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DebugScript
+  - hash:
+      serializedVersion: 2
+      Hash: 701e16548200aaa7d6b12f273147124f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GlobalAudio
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -745,7 +764,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 4334f1733525aaf85fe34790e95a69b6
+      Hash: ad36c8736010c2b85e07a5aac7234dee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerVariables
@@ -889,6 +908,12 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationBoolSet
+  - hash:
+      serializedVersion: 2
       Hash: 528e9858840cb8370d93939fff6b42d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1013,6 +1038,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ToggleGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OnMenuStart
   - hash:
       serializedVersion: 2
       Hash: a0794908b4c35b86db95272ab4e9bf54

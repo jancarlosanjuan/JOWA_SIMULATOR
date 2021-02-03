@@ -101,7 +101,7 @@ public class GestureManager : MonoBehaviour
                 FireTapEvent(startPoint);
             }*/
             if (gestureTime <= _swipeProperty.swipeTime && 
-                (Vector2.Distance(startPoint, endPoint) < (_swipeProperty.minSwipeDistance * Screen.dpi)))
+                (Vector2.Distance(startPoint, endPoint) >= (_swipeProperty.minSwipeDistance * Screen.dpi)))
             {
                 //Debug.Log("Swipe");
                 FireSwipeEvents();
