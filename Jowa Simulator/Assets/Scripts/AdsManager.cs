@@ -25,8 +25,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     public const string RewardedAd = "rewardedVideo";
     public const string BannerAd = "BannerAd";
 
-    public GameObject sharePanel;
-
+    public GameObject shopPanel;
     void Start()
     {
         Advertisement.AddListener(this);
@@ -35,7 +34,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     void Update()
     {
-        if (sharePanel.activeSelf)
+        if (shopPanel.activeSelf)
         {
             DisplayBannerAd();
         }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GlobalManager : MonoBehaviour
 {
     //SINGLETON DO NOT EDIT 
     private static GlobalManager _instance;
+
     public static GlobalManager Instance
     {
         get

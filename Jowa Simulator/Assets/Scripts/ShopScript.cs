@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class ShopScript : MonoBehaviour
 {
@@ -18,10 +19,28 @@ public class ShopScript : MonoBehaviour
     public Text speedButtonText;
     public Text shieldButtonText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public AdsManager adsManager;
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        adsManager.OnAdDone += AdsManager_OnAdDone;
+    }
+
+    private void AdsManager_OnAdDone(object sender, AdFinishedEventArgs e)
+    {
+        if (e.PlacementID == AdsManager.RewardedAd)
+        {
+            switch (e.AdShowResult)
+            {
+                case ShowResult.Failed: Debug.Log("Ad failed"); break;
+                case ShowResult.Skipped: Debug.Log("Ad was skipped"); break;
+                case ShowResult.Finished:
+                    Debug.Log("Ad finished! Rewarding free Jowa Shield!");
+                    GlobalManager.Instance.Shields += 1;
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame
